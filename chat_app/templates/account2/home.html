@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row main_screen_button_cont">
+	<div class="col-md-6 inner_col">
+		<a  class="btn btn-success" href="{% url 'account2:account_login' %}">Login</a>
+	</div>
+	<div class="col-md-6 inner_col">
+		<a  class="btn btn-success" href="{% url 'account2:account_signup' %}">signup</a>
+	</div>
+</div>
+{% endblock %}
+
+
