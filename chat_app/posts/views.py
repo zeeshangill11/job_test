@@ -1,13 +1,12 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
-from django.shortcuts import render, redirect,reverse
+from django.shortcuts import render, redirect, reverse
 from .models import Post
 from django.contrib.auth.decorators import login_required
 
 
- 
 @login_required(login_url='login')
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -23,7 +22,6 @@ def delete_post(request, pk):
 def post_list(request):
     posts = Post.objects.filter(user=request.user)
     return render(request, 'posts/post_list.html', {'posts': posts})
-
 
 
 @login_required(login_url='login')

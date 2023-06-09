@@ -1,41 +1,30 @@
-
-
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 {% block content %}
-
-
 <div class="login_signup_container">
-
-
   <form method="POST">
-      {% csrf_token %}
-      {% if error_message %}
-        <div  class="alert alert-danger">{{ error_message }}</div>
-      {% endif %}
+    {% csrf_token %}
+    {% if error_message %}
+    <div class="alert alert-danger">{{ error_message }}</div>
+    {% endif %}
 
-      {% for field in form %}
-        <div class="form-field mb-4">
-         {{ field.label_tag }}
-         {% render_field field|add_class:"form-control" %}
-          
-          {% for error in field.errors %}
-            <span class="error-message">{{ error }}</span>
-          {% endfor %}
-         
-        </div>
+    {% for field in form %}
+    <div class="form-field mb-4">
+      {{ field.label_tag }}
+      {% render_field field|add_class:"form-control" %}
+
+      {% for error in field.errors %}
+      <span class="error-message">{{ error }}</span>
       {% endfor %}
 
-     <button type="submit" class="btn btn-primary btn-block mb-4">Sign Up</button>
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">Sign Up</button>
 
     <div class="text-center">
       <p>Already member? <a href="{% url 'account2:account_login' %}">Login</a></p>
     </div>
   </form>
 </div>
-
-
-
-
 {% endblock %}
-
